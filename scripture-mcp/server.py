@@ -12,6 +12,7 @@ from tools.get_passage import get_passage
 from tools.cross_reference import get_cross_references
 from tools.topic_lookup import get_topic_verses
 from tools.original_language_lookup import original_language_lookup
+from tools.character_profile import character_profile
 
 mcp = FastMCP("ScriptureInsight")
 
@@ -22,6 +23,7 @@ mcp.tool()(get_passage)
 mcp.tool()(get_cross_references)
 mcp.tool()(get_topic_verses)
 mcp.tool()(original_language_lookup)
+mcp.tool()(character_profile)
 
 if __name__ == "__main__":
     mcp.run(transport='stdio')
