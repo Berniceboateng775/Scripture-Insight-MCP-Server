@@ -1,0 +1,17 @@
+import sys
+import os
+import asyncio
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, BASE_DIR)
+
+from mcp.server.fastmcp import FastMCP
+from tools.search_verse import search_verse
+
+mcp = FastMCP("ScriptureInsight")
+
+# Register our imported tools!
+mcp.tool()(search_verse)
+
+if __name__ == "__main__":
+    mcp.run(transport='stdio')
