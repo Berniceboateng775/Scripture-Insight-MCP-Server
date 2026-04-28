@@ -9,6 +9,7 @@ from mcp.server.fastmcp import FastMCP
 from tools.search_verse import search_verse
 from tools.get_verse import get_verse
 from tools.get_passage import get_passage
+from tools.cross_reference import get_cross_references
 
 mcp = FastMCP("ScriptureInsight")
 
@@ -16,6 +17,7 @@ mcp = FastMCP("ScriptureInsight")
 mcp.tool()(search_verse)
 mcp.tool()(get_verse)
 mcp.tool()(get_passage)
+mcp.tool()(get_cross_references)
 
 if __name__ == "__main__":
     mcp.run(transport='stdio')
