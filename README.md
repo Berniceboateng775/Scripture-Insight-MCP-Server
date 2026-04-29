@@ -100,13 +100,13 @@ python -m venv venv
 venv\Scripts\activate
 
 # Install dependencies
-pip install -r scripture-mcp/requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 2. Database Ingestion
 Before the server can search scripture, the database must be populated:
 ```bash
-python database/ingest.py
+python scripture-mcp/database/ingest.py
 ```
 This fetches the biblical text, generates semantic embeddings, and stores them in the persistent `chroma_db/` directory.
 
@@ -134,18 +134,18 @@ To connect Claude Desktop to your local MCP server, update your `claude_desktop_
 ```
 Scripture Insight MCP Server/
 ├── assets/                  # Screenshots demonstrating the tools
-├── chroma_db/               # Persistent local vector database storage
-├── database/
-│   ├── chroma_client.py     # Database connection singleton
-│   └── ingest.py            # Script to populate the database
+├── requirements.txt         # Python dependencies
 ├── scripture-mcp/
-│   ├── requirements.txt     # Python dependencies
+│   ├── database/
+│   │   ├── chroma_db/       # Persistent local vector database storage
+│   │   ├── chroma_client.py # Database connection singleton
+│   │   └── ingest.py        # Script to populate the database
+│   ├── services/
+│   │   ├── bible_api.py     # Handles fetching external Bible data
+│   │   ├── embeddings.py    # HuggingFace sentence-transformers logic
+│   │   └── search_service.py# Core semantic search logic
+│   ├── tools/               # The 10 modular MCP tools (detailed below)
 │   └── server.py            # FastMCP server entrypoint & tool registration
-├── services/
-│   ├── bible_api.py         # Handles fetching external Bible data
-│   ├── embeddings.py        # HuggingFace sentence-transformers logic
-│   └── search_service.py    # Core semantic search logic
-└── tools/                   # The 10 modular MCP tools (detailed below)
 ```
 *All functions and modules are documented using standard Python docstrings for clarity and maintainability.*
 
