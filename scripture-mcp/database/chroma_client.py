@@ -4,8 +4,8 @@ from chromadb.config import Settings
 
 import os
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-db_path = os.path.join(BASE_DIR, "chroma_db")
+# Point directly to the chroma_db folder inside the database directory
+db_path = os.path.join(os.path.dirname(__file__), "chroma_db")
 
 client = chromadb.PersistentClient(path=db_path)
 
