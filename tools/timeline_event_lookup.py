@@ -10,8 +10,6 @@ def timeline_event_lookup(event_name: str, num_results: int = 5) -> str:
         num_results: The number of historical verses to return.
     """
     try:
-        # We craft a historical-focused semantic prompt to direct the AI embeddings 
-        # specifically toward narrative and historical recording of the event rather than just theology.
         prompt = f"Historical, narrative, and chronological verses recording the major biblical event of {event_name}"
         query_embedding = embed_texts([prompt])
         

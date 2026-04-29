@@ -10,7 +10,7 @@ def theological_analysis(reference: str, question: str) -> str:
         question: The theological question or angle to analyze it from.
     """
     try:
-        # 1. Fetch the primary verse text
+        # fetch the primary verse text
         target = collection.get(where={"reference": reference})
         docs = target.get('documents', [])
         if not docs:
@@ -18,9 +18,6 @@ def theological_analysis(reference: str, question: str) -> str:
             
         base_text = docs[0]
         
-        # 2. We perform a highly specific semantic RAG (Retrieval-Augmented Generation) query.
-        # We blend the user's question with the base text to find the most mathematically 
-        # relevant verses across the entire Bible that answer their specific theological question!
         prompt = f"Theological and doctrinal context answering '{question}' based on the verse: {base_text}"
         query_embedding = embed_texts([prompt])
         
@@ -32,7 +29,6 @@ def theological_analysis(reference: str, question: str) -> str:
         cross_docs = results.get('documents', [[]])[0]
         cross_metas = results.get('metadatas', [[]])[0]
         
-        # 3. We format the raw data payload for Claude to reason over
         formatted = f"**Raw Data for Theological Analysis of {reference}**\n\n"
         formatted += f"**Primary Text ({reference})**: {base_text}\n\n"
         formatted += "**Theological Context & Supporting Verses**:\n"

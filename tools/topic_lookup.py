@@ -10,9 +10,9 @@ def get_topic_verses(topic: str, num_results: int = 7) -> str:
         num_results: The number of highly relevant verses to retrieve.
     """
     try:
-        # We wrap the user's topic in a leading prompt string. 
-        # This acts as an anchoring technique so the AI embedding model knows exactly what context 
-        # to apply mathematically to the vector search!
+        #wrapping the user's topic in a leading prompt string. 
+        #This acts as an anchoring technique so the AI embedding model knows exactly what context 
+        #to apply mathematically to the vector search
         query_embedding = embed_texts([f"Verses teaching about the core theological concept of {topic}"])
         
         results = collection.query(

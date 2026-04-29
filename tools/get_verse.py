@@ -10,7 +10,7 @@ def get_verse(book: str, chapter: int, verse: int) -> str:
         verse: The verse number.
     """
     try:
-        #query the database using an exact metadata filter, rather than semantic similarity
+        #querying the database using an exact metadata filter, rather than semantic similarity
         results = collection.get(
             where={
                 "$and": [

@@ -10,9 +10,9 @@ def original_language_lookup(term: str, testament: str = "Both") -> str:
         testament: 'Old' for Hebrew concepts, 'New' for Greek concepts, or 'Both'.
     """
     try:
-        # We craft a specific semantic anchor to look for verses embodying the original term's meaning.
-        # Since the database is English, semantic search will map the underlying concept of the foreign word 
-        # directly natively to the english verse that expresses it!
+        #crafting a specific semantic anchor to look for verses embodying the original term's meaning.
+        #since the database is English, semantic search will map the underlying concept of the foreign word 
+        #directly natively to the english verse that expresses it
         prompt = f"Verses representing the deep biblical original language concept and meaning of the word '{term}'"
         query_embedding = embed_texts([prompt])
         

@@ -10,8 +10,8 @@ def character_profile(character: str, num_results: int = 6) -> str:
         num_results: The number of biographical verses to retrieve.
     """
     try:
-        # We craft a prompt that specifically directs the semantic search to look for 
-        # historical and biographical significance rather than a standard keyword match.
+        #crafting a prompt that specifically directs the semantic search to look for 
+        #historical and biographical significance rather than a standard keyword match.
         prompt = f"Key biographical verses detailing the life, profile, and major actions of the biblical character {character}"
         query_embedding = embed_texts([prompt])
         

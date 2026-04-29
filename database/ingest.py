@@ -4,7 +4,7 @@ from services.bible_api import get_books, get_chapter
 from services.embeddings import embed_texts
 
 BATCH_SIZE = 100
-MAX_WORKERS = 66  # Run many threads concurrently so books process in parallel
+MAX_WORKERS = 66  
 
 def process_chapter(book_id, book_name, chapter_num):
     """Fetches a chapter and formats its verses for ingestion."""
@@ -62,7 +62,7 @@ def main():
         print("No books found from API.")
         return
 
-    # Create tasks for all chapters in these books
+    #creating tasks for all chapters in these books
     tasks = []
     for book in books:
         book_id = book['id']
@@ -76,7 +76,7 @@ def main():
     print(f"Ingesting {len(tasks)} chapters using {MAX_WORKERS} parallel workers...")
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        # Submit all tasks
+        
         future_to_chapter = {
             executor.submit(process_chapter, bid, bname, cnum): (bid, bname, cnum)
             for bid, bname, cnum in tasks

@@ -10,7 +10,7 @@ def get_cross_references(reference: str, num_results: int = 5) -> str:
         num_results: How many highly related cross-references to return (default 5).
     """
     try:
-        # First, find the exact target verse in the database using the metadata 
+        
         target = collection.get(
             where={"reference": reference}
         )
@@ -21,10 +21,10 @@ def get_cross_references(reference: str, num_results: int = 5) -> str:
             
         base_text = docs[0]
         
-        # Now we run a semantic query using the base verse text to find things mathematically similar in theme!
+        #running a semantic query using the base verse text to find things mathematically similar in theme
         query_embedding = embed_texts([base_text])
         
-        # We query for n_results + 1 because the #1 top result will obviously be the exact verse itself
+        #querying for n_results + 1 because the #1 top result will obviously be the exact verse itself
         results = collection.query(
             query_embeddings=query_embedding,
             n_results=num_results + 1

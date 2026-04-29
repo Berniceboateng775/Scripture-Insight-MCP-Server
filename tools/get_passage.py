@@ -11,7 +11,7 @@ def get_passage(book: str, chapter: int, start_verse: int, end_verse: int) -> st
         end_verse: The ending verse number.
     """
     try:
-        # We query the database using 'greater than or equal' and 'less than or equal' metadata operators
+        #querying the database using 'greater than or equal' and 'less than or equal' metadata operators
         results = collection.get(
             where={
                 "$and": [
@@ -29,10 +29,10 @@ def get_passage(book: str, chapter: int, start_verse: int, end_verse: int) -> st
         if not documents:
             return f"Passage not found: {book} {chapter}:{start_verse}-{end_verse}"
         
-        # Combine docs and metadata so we can properly order them 
+        
         combined = list(zip(documents, metadatas))
         
-        # Sort by verse number sequentially (Chroma doesn't guarantee return order)
+        #sorting by verse number sequentially 
         combined.sort(key=lambda x: x[1].get("verse", 0))
         
         formatted = f"**{book} {chapter}:{start_verse}-{end_verse}**\n\n"
