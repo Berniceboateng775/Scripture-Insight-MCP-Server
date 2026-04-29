@@ -15,10 +15,11 @@ from tools.original_language_lookup import original_language_lookup
 from tools.character_profile import character_profile
 from tools.timeline_event_lookup import timeline_event_lookup
 from tools.summarize_passage import summarize_passage
+from tools.theological_analysis import theological_analysis
 
 mcp = FastMCP("ScriptureInsight")
 
-# Register our imported tools!
+#registering our imported tools!
 mcp.tool()(search_verse)
 mcp.tool()(get_verse)
 mcp.tool()(get_passage)
@@ -28,6 +29,7 @@ mcp.tool()(original_language_lookup)
 mcp.tool()(character_profile)
 mcp.tool()(timeline_event_lookup)
 mcp.tool()(summarize_passage)
+mcp.tool()(theological_analysis)
 
 if __name__ == "__main__":
     mcp.run(transport='stdio')
