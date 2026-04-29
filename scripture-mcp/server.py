@@ -14,6 +14,7 @@ from tools.topic_lookup import get_topic_verses
 from tools.original_language_lookup import original_language_lookup
 from tools.character_profile import character_profile
 from tools.timeline_event_lookup import timeline_event_lookup
+from tools.summarize_passage import summarize_passage
 
 mcp = FastMCP("ScriptureInsight")
 
@@ -26,6 +27,7 @@ mcp.tool()(get_topic_verses)
 mcp.tool()(original_language_lookup)
 mcp.tool()(character_profile)
 mcp.tool()(timeline_event_lookup)
+mcp.tool()(summarize_passage)
 
 if __name__ == "__main__":
     mcp.run(transport='stdio')
